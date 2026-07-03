@@ -1,15 +1,19 @@
 ---
 name: attack
 description: >-
-  Use this skill to stress-test a conclusion, plan, argument, model, design, or
-  decision before publication, presentation, execution, or commitment. Use when
-  the user wants robustness, criticism, failure modes, hidden assumptions,
-  alternative explanations, sensitivity checks, downside risks, or reviewer-style
-  objections. Also use when the user invokes adversarial review, counterfactual
-  thinking, Murphy's Law, sensitivity analysis, risk control, stress testing, or
-  asks what would break. Prefer frame, simplify, calibrate, or explain first if
-  the work is not yet concrete enough to attack. This is adversarial review of
-  ideas and plans, not personal attack and not cybersecurity exploitation.
+  Use this skill to stress-test a concrete conclusion, plan, argument, model,
+  design, document, or decision before publication, presentation, execution,
+  launch, release, funding request, submission, rollout, or other commitment.
+  Use when the user wants robustness, criticism, failure modes, hidden
+  assumptions, alternative explanations, sensitivity checks, downside risks,
+  reviewer-style objections, adversarial review, counterfactual thinking,
+  Murphy's Law, risk control, stress testing, or asks what would break. Use
+  attack first for imminent commitment even if evidence is uncertain. Do not
+  lead with attack when the main question is how strongly to believe a claim;
+  use calibrate first. Do not use for PR diffs or code review when a
+  code-review skill is available, unless the user asks for broader adversarial
+  review beyond code correctness. This is not personal attack or cybersecurity
+  exploitation.
 ---
 
 # Attack
@@ -37,8 +41,9 @@ Use `attack` when there is a concrete thing to stress-test.
 
 - If the problem is still vague, use `frame` first.
 - If the plan is too large or fragile because of complexity, use `simplify` before attacking.
-- If the main issue is evidence strength or confidence, use `calibrate` before attacking.
+- If the main issue is evidence strength or confidence, use `calibrate` before attacking. Attack leads only when there is a concrete plan, document, conclusion, or decision already ready for commitment; then include the evidence check inside the attack.
 - If the main issue is whether others can understand the idea, use `explain` before attacking.
+- If the task is a PR diff, merge review, or code review and a dedicated code-review skill is available, use that skill before `attack`. Use `attack` only for broader non-code adversarial review, such as product rollout, policy, business risk, or research argument robustness.
 - If the task asks for harmful tactics, exploitation, evasion, or personal abuse, refuse that part and redirect to safe robustness review.
 
 ## What To Do

@@ -21,6 +21,12 @@ skills/
   attack/SKILL.md
 scripts/
   sync-from-local.ps1
+tests/
+  README.md
+  runbook.md
+  scenarios.md
+  iteration-2-parameterized-scenarios.md
+  results/
 ```
 
 ## Sync From Local
@@ -44,3 +50,15 @@ The script copies from:
 ```
 
 Then validates that all five `SKILL.md` files exist in this repository.
+
+## Benchmark
+
+The benchmark package lives in `tests/`:
+
+- `tests/README.md`: protocol, scoring discipline, and RED-GREEN-REFACTOR rules.
+- `tests/runbook.md`: handoff entry for another agent to run the full matrix.
+- `tests/scenarios.md`: original route, execution, collision, cross-language, and handoff scenarios.
+- `tests/iteration-2-parameterized-scenarios.md`: holdout scenarios for boundary and wording variance.
+- `tests/results/`: dated run records and failure summaries.
+
+For handoff, start with `tests/results/2026-07-02-iteration-2-smoke.md`. It is the current completion record after the failure list and targeted refactor validation. `tests/results/2026-07-02-failures.md` is historical evidence; read it with `tests/results/2026-07-02-refactor-validation.md` and the iteration-2 smoke record before treating any item as still open.

@@ -10,7 +10,10 @@ description: >-
   evidence weighting, priors, posteriors, or asks how strongly to believe a
   claim. Prefer frame first if the question is not well-defined. Do not use for
   ordinary source fetching or data analysis unless the central task is
-  evidence-weighted judgment.
+  evidence-weighted judgment. If the user mainly asks how strongly to believe a
+  claim, use calibrate even if publication may follow; hand off to attack only
+  when a concrete claim, document, decision, funding request, or rollout
+  commitment is ready for review.
 ---
 
 # Calibrate
@@ -40,6 +43,7 @@ Use `calibrate` to decide how strongly to believe something, not to gather all p
 - If the issue is too many moving parts rather than uncertain evidence, use `simplify` instead.
 - If the user needs to communicate a calibrated judgment, use `explain` after calibration.
 - If a calibrated judgment may still fail under objections or alternative explanations, use `attack` after calibration.
+- If the user is moving from belief update to commitment action, such as announcing, launching, publishing, submitting, applying for funding, or rolling out, use `attack` for pre-commitment stress testing instead of continuing to calibrate.
 - If fresh facts are required and could have changed, fetch or verify them with the appropriate tool before calibrating.
 
 ## What To Do
@@ -87,3 +91,4 @@ After calibration:
 - Use `simplify` if too many factors are overwhelming the decision.
 - Use `explain` if the updated judgment needs to be communicated clearly.
 - Use `attack` if alternative explanations or hidden risks remain strong.
+- Use `attack` when the user moves to a commitment action such as announcing, applying for funding, launching, submitting, or rolling out; do not keep calibrating.

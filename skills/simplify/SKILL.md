@@ -8,8 +8,12 @@ description: >-
   a baseline, prototype, minimum viable model, or staged expansion path. Prefer
   this when the user invokes Occam's Razor, razor thinking, opportunity cost,
   bounded rationality, MVP thinking, or asks what can be safely removed. Prefer
-  frame first if the problem boundary is unclear. Do not use to remove
-  complexity that is essential to the real mechanism.
+  this directly, without frame first, when the objective is already stated and
+  the user asks where to start among overloaded requirements. Prefer frame first
+  if the problem boundary is unclear. Do not use to remove complexity that is
+  essential to the real mechanism, or to target safety mechanisms: redundancy,
+  watchdogs, validation layers, safety-critical or medical systems. Requests to
+  simplify those mechanisms should route to frame or attack, not simplify.
 ---
 
 # Simplify
@@ -36,10 +40,12 @@ Do not use it when the problem is unclear; use `frame` first.
 Use `simplify` to reduce a known problem to an actionable version, not to redefine the problem from scratch.
 
 - If the user has not clarified the real objective or boundary, use `frame` first.
+- If the objective is already stated and the complexity lives in the plan or requirement list, use `simplify` directly instead of framing again.
 - If the bottleneck is confidence in evidence or a claim, use `calibrate` instead.
 - If the bottleneck is communication, use `explain` instead.
 - If the plan is already chosen and needs failure-mode review, use `attack` instead.
 - If simplification would remove the mechanism that makes the problem real, keep that mechanism in scope.
+- If simplification would target redundancy, watchdogs, validation layers, safety-critical systems, or medical systems, do not include `simplify` in the initial route. Use `frame` or `attack` to fence the risk. Only after the safety mechanism is explicitly preserved may later work simplify surrounding workflow, presentation, or non-safety code.
 
 ## What To Do
 

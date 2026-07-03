@@ -1,16 +1,18 @@
 ---
 name: frame
 description: >-
-  Use this skill first when a problem is vague, overloaded, prematurely
-  solution-driven, or poorly bounded and needs clearer structure before
-  solving. Use for research design, strategy, decisions, model framing,
-  conceptual clarification, and complex problem diagnosis when the agent needs
-  to separate facts, assumptions, inferences, constraints, objectives, and key
-  uncertainties. Also use when the user invokes first-principles thinking,
-  system boundaries, boundary thinking, problem framing, or asks to identify
-  what is inside versus outside the problem. Prefer this before simplify,
-  calibrate, explain, or attack when the real problem or boundary is not yet
-  clear. Do not use for simple factual answers or routine execution tasks.
+  Use this skill first when the real problem is vague, poorly bounded, or
+  prematurely framed and needs clearer structure before solving. Use for
+  research design, strategy, decisions, models, conceptual clarification, and
+  complex diagnosis when facts, assumptions, inferences, constraints,
+  objectives, and key uncertainties must be separated. Also use when the user
+  invokes first-principles thinking, system boundaries, boundary thinking,
+  problem framing, or asks what is inside versus outside the problem. Do not
+  use when the objective is already stated and overload lives in the solution:
+  too many features, options, or requirements; use simplify directly. Do not
+  use for open-ended idea generation for something that does not exist yet; use
+  brainstorming or ideation. Do not use for simple factual answers or routine
+  execution tasks.
 ---
 
 # Frame
@@ -36,6 +38,8 @@ Do not use it when the task is already well-bounded and the user mainly needs ex
 Use `frame` to decide what problem should be solved, not to solve it fully.
 
 - If the problem is clear but too complex, use `simplify` instead.
+- If the user has already stated the real objective and the complexity lives in the plan or requirement list, skip frame and use `simplify` directly.
+- If the user wants ideas or directions for something that does not exist yet, use a brainstorming or ideation skill; frame clarifies existing problems, it does not generate options.
 - If the problem is clear but the evidence is uncertain, use `calibrate` instead.
 - If the user mainly needs a clearer explanation for an already-understood idea, use `explain` instead.
 - If the work is close to adoption and needs stress-testing, use `attack` instead.
@@ -53,6 +57,8 @@ Identify the real structure of the problem:
 - Name the most consequential uncertainty.
 
 Use whatever structure helps: short paragraphs, bullets, a compact map, or a small table. Do not force a template when a direct explanation is clearer.
+
+If the user requests a solution artifact such as a plan, roadmap, schedule, or table before the problem is framed, the deliverable of this skill is the frame itself: the sharper problem statement, the boundary, the assumptions that matter, the decisive uncertainty, and the specific information still needed before the artifact can be responsibly built. Offer at most a decision gate or validation path. That gate should state the immediate evidence, threshold, or next question needed to choose a path; it should not become a month-by-month, year-by-year, option-by-option roadmap that resembles the requested artifact. Produce the full artifact only after these are settled, as a separate step.
 
 ## Output Standard
 
