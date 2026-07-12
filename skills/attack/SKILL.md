@@ -1,19 +1,13 @@
 ---
 name: attack
 description: >-
-  Use this skill to stress-test a concrete conclusion, plan, argument, model,
-  design, document, or decision before publication, presentation, execution,
-  launch, release, funding request, submission, rollout, or other commitment.
-  Use when the user wants robustness, criticism, failure modes, hidden
-  assumptions, alternative explanations, sensitivity checks, downside risks,
-  reviewer-style objections, adversarial review, counterfactual thinking,
-  Murphy's Law, risk control, stress testing, or asks what would break. Use
-  attack first for imminent commitment even if evidence is uncertain. Do not
-  lead with attack when the main question is how strongly to believe a claim;
-  use calibrate first. Do not use for PR diffs or code review when a
-  code-review skill is available, unless the user asks for broader adversarial
-  review beyond code correctness. This is not personal attack or cybersecurity
-  exploitation.
+  Use only for an explicit adversarial or stress-test request: the user invokes
+  `$attack` or asks what would break, for the strongest objections, a pre-mortem,
+  reviewer-style criticism, counterfactual failure modes, or downside risks. Do
+  not trigger merely because a plan is important, near execution, or would
+  benefit from ordinary review. Do not use for routine code review, personal
+  attack, or cybersecurity exploitation. Do not automatically invoke another
+  thinking skill afterward.
 ---
 
 # Attack
@@ -21,6 +15,14 @@ description: >-
 Attack finds where an idea, plan, argument, or decision is most likely to fail.
 
 It applies adversarial review, Murphy's Law, counterfactual thinking, sensitivity thinking, failure mode analysis, and risk control. The goal is constructive robustness, not generic negativity.
+
+## Activation Contract
+
+- Trigger only for an explicit `$attack` request or an unmistakable adversarial review.
+- Importance, risk, or proximity to execution alone is not a trigger.
+- Use at most one of `frame`, `simplify`, `calibrate`, `explain`, and `attack` in a response by default.
+- Never load another thinking skill as an automatic handoff. Complete the attack pass first.
+- If another mode could materially help later, mention at most one optional next pass after delivering the current result.
 
 ## When To Use
 
@@ -37,13 +39,11 @@ Do not use it to attack people, evade systems, exploit software, or generate har
 
 ## Trigger Boundary
 
-Use `attack` when there is a concrete thing to stress-test.
+Use `attack` only when there is a concrete thing to stress-test.
 
-- If the problem is still vague, use `frame` first.
-- If the plan is too large or fragile because of complexity, use `simplify` before attacking.
-- If the main issue is evidence strength or confidence, use `calibrate` before attacking. Attack leads only when there is a concrete plan, document, conclusion, or decision already ready for commitment; then include the evidence check inside the attack.
-- If the main issue is whether others can understand the idea, use `explain` before attacking.
-- If the task is a PR diff, merge review, or code review and a dedicated code-review skill is available, use that skill before `attack`. Use `attack` only for broader non-code adversarial review, such as product rollout, policy, business risk, or research argument robustness.
+- If the target is too vague to attack, state what is missing; do not chain to another thinking skill.
+- If complexity, evidence strength, or communication is the real bottleneck, say adversarial review is not the right audit instead of loading another mode.
+- For routine PR or code review, use the normal code-review path; reserve `attack` for broader adversarial review.
 - If the task asks for harmful tactics, exploitation, evasion, or personal abuse, refuse that part and redirect to safe robustness review.
 
 ## What To Do
@@ -97,12 +97,6 @@ Stop attacking when the most important vulnerabilities, likely objections, and p
 - Demanding perfect certainty before action.
 - Confusing possible failure with probable failure.
 
-## Handoff
+## Optional Next Pass
 
-After attack:
-
-- Use `frame` if the attack shows the original problem is misframed.
-- Use `simplify` if the plan is too complex and fragile.
-- Use `calibrate` if the main weakness is uncertain evidence.
-- Use `explain` if the main weakness is unclear communication.
-- Run another attack pass after revision when stakes justify it.
+Do not automatically invoke another thinking skill. After completing the attack, mention at most one optional explicit command only when a separate pass would materially change the decision. A second attack pass requires a revised artifact or an explicit user request.

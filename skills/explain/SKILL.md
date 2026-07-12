@@ -1,16 +1,11 @@
 ---
 name: explain
 description: >-
-  Use this skill when an idea, concept, model, argument, plan, or decision needs
-  an explanation audit: testing whether it is genuinely understood,
-  mechanically clear, and communicable without hiding weak reasoning behind
-  jargon. Use when the user cannot explain an idea clearly, needs both
-  plain-language and professional versions, or when terms, mechanisms, causal
-  paths, or conceptual leaps are unclear. Do not use for every ordinary request
-  to explain; use it when explanation is being used to audit understanding and
-  improve communication. Also use when the user invokes Feynman review, Feynman
-  technique, explanation audit, anti-jargon checking, or asks whether they
-  genuinely understand an idea.
+  Use only for an explicit explanation-as-understanding audit: the user invokes
+  `$explain`, asks for a Feynman-style check, asks whether an explanation proves
+  real understanding, or wants jargon and missing mechanisms exposed. Do not
+  trigger for ordinary explanations, summaries, teaching, rewriting, or prose
+  polishing. Do not automatically invoke another thinking skill afterward.
 ---
 
 # Explain
@@ -18,6 +13,14 @@ description: >-
 Explain tests understanding through explanation.
 
 It applies the Feynman technique, conceptual clarity review, mechanism explanation, and anti-jargon checking. The goal is not just simpler prose. The goal is to reveal whether the idea is actually understood.
+
+## Activation Contract
+
+- Trigger only for an explicit `$explain` request or an unmistakable explanation audit.
+- An ordinary request to explain, summarize, teach, or rewrite is not a trigger.
+- Use at most one of `frame`, `simplify`, `calibrate`, `explain`, and `attack` in a response by default.
+- Never load another thinking skill as an automatic handoff. Complete the explanation audit first.
+- If another mode could materially help later, mention at most one optional next pass after delivering the current result.
 
 ## When To Use
 
@@ -36,11 +39,9 @@ Do not use it for ordinary factual explanation when no audit of understanding is
 
 Use `explain` to test and improve understanding through communication, not to make every answer simpler.
 
-- If the idea itself is not yet bounded, use `frame` first.
-- If the idea is too complex to explain because it is overbuilt, use `simplify` first.
-- If the explanation depends on uncertain claims, use `calibrate` before or during explanation.
-- If the explanation sounds clear but may fail under criticism, use `attack` after explanation.
-- If the task is broad writing polish rather than conceptual clarity, use a writing-quality skill such as `clearwrite` instead.
+- If the idea is not defined well enough to explain truthfully, state the missing concept; do not chain to another thinking skill.
+- If complexity, confidence, or robustness is the real bottleneck, say explanation is not the right audit instead of loading another mode.
+- If the task is broad writing polish rather than conceptual clarity, handle it as writing work rather than an explanation audit.
 
 ## What To Do
 
@@ -79,11 +80,6 @@ Stop explaining when the intended audience can follow the mechanism, the key ter
 - Producing a childish explanation for an expert context.
 - Turning this into generic writing polish; use `clearwrite` for broad writing quality.
 
-## Handoff
+## Optional Next Pass
 
-After explanation:
-
-- Use `frame` if the explanation reveals the problem is unclear.
-- Use `simplify` if the idea is too overbuilt to explain.
-- Use `calibrate` if the explanation relies on uncertain claims.
-- Use `attack` if the explanation sounds clear but may fail under criticism.
+Do not automatically invoke another thinking skill. After completing the explanation audit, mention at most one optional explicit command only when a separate pass would materially change the decision.

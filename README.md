@@ -1,6 +1,6 @@
 # Thinking Flow
 
-Personal cross-agent thinking skills for problem framing, simplification, calibrated judgment, explanation audits, and adversarial review.
+Personal cross-agent skills for problem framing, simplification, calibrated judgment, explanation audits, adversarial review, and serious writing quality control.
 
 ## Skills
 
@@ -9,6 +9,7 @@ Personal cross-agent thinking skills for problem framing, simplification, calibr
 - `calibrate`: Bayesian-style evidence weighting and confidence calibration.
 - `explain`: Feynman-style explanation audit and anti-jargon clarity review.
 - `attack`: Adversarial review, counterfactual stress testing, Murphy's Law, sensitivity analysis, and risk control.
+- `clearwrite`: Chinese and English serious-writing quality control for argument, structure, evidence, reader path, and revision strategy.
 
 ## Layout
 
@@ -19,6 +20,7 @@ skills/
   calibrate/SKILL.md
   explain/SKILL.md
   attack/SKILL.md
+  clearwrite/SKILL.md
 scripts/
   sync-from-local.ps1
 tests/
@@ -49,7 +51,7 @@ The script copies from:
 %USERPROFILE%\.cc-switch\skills\<skill>\SKILL.md
 ```
 
-Then validates that all five `SKILL.md` files exist in this repository.
+Then validates that all six `SKILL.md` files exist in this repository.
 
 ## Benchmark
 

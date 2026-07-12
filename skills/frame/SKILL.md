@@ -1,18 +1,12 @@
 ---
 name: frame
 description: >-
-  Use this skill first when the real problem is vague, poorly bounded, or
-  prematurely framed and needs clearer structure before solving. Use for
-  research design, strategy, decisions, models, conceptual clarification, and
-  complex diagnosis when facts, assumptions, inferences, constraints,
-  objectives, and key uncertainties must be separated. Also use when the user
-  invokes first-principles thinking, system boundaries, boundary thinking,
-  problem framing, or asks what is inside versus outside the problem. Do not
-  use when the objective is already stated and overload lives in the solution:
-  too many features, options, or requirements; use simplify directly. Do not
-  use for open-ended idea generation for something that does not exist yet; use
-  brainstorming or ideation. Do not use for simple factual answers or routine
-  execution tasks.
+  Use only for an explicit problem-framing audit: the user invokes `$frame` or
+  asks to define the real problem, system boundary, objective, assumptions, or
+  decisive uncertainty before solving. Do not trigger merely because a task is
+  complex, strategic, research-related, or mildly ambiguous. Do not use for
+  ordinary clarification, idea generation, factual answers, or routine
+  execution. Do not automatically invoke another thinking skill afterward.
 ---
 
 # Frame
@@ -20,6 +14,14 @@ description: >-
 Frame clarifies what problem is actually being solved.
 
 Use it to turn confusion into structure before giving advice, making a plan, or drawing a conclusion. It applies first-principles thinking, boundary thinking, and fact-assumption-inference separation.
+
+## Activation Contract
+
+- Trigger only for an explicit `$frame` request or an unmistakable framing audit.
+- Complexity alone is not a trigger; answer directly when the task is already actionable.
+- Use at most one of `frame`, `simplify`, `calibrate`, `explain`, and `attack` in a response by default.
+- Never load another thinking skill as an automatic handoff. Complete the framing pass first.
+- If another mode could materially help later, mention at most one optional next pass after delivering the current result.
 
 ## When To Use
 
@@ -35,15 +37,12 @@ Do not use it when the task is already well-bounded and the user mainly needs ex
 
 ## Trigger Boundary
 
-Use `frame` to decide what problem should be solved, not to solve it fully.
+Use `frame` only to decide what problem should be solved, not to solve it fully.
 
-- If the problem is clear but too complex, use `simplify` instead.
-- If the user has already stated the real objective and the complexity lives in the plan or requirement list, skip frame and use `simplify` directly.
-- If the user wants ideas or directions for something that does not exist yet, use a brainstorming or ideation skill; frame clarifies existing problems, it does not generate options.
-- If the problem is clear but the evidence is uncertain, use `calibrate` instead.
-- If the user mainly needs a clearer explanation for an already-understood idea, use `explain` instead.
-- If the work is close to adoption and needs stress-testing, use `attack` instead.
-- If multiple skills seem relevant and the boundary is unclear, start with `frame` and hand off once the boundary is stable.
+- If the problem is already clear, do not force a framing pass.
+- If the user wants ideas for something that does not yet exist, generate or discuss options directly; do not route to a missing ideation skill.
+- If evidence strength, communication, simplification, or robustness is the real bottleneck, say that framing is not the right audit instead of loading another thinking skill.
+- If several modes appear relevant, choose the single dominant bottleneck for this response.
 
 ## What To Do
 
@@ -83,11 +82,6 @@ Stop framing once the problem statement, boundary, main variables, and most impo
 - Adding abstractions that do not change the decision.
 - Presenting unclear assumptions as facts.
 
-## Handoff
+## Optional Next Pass
 
-After framing:
-
-- Use `simplify` if the problem is now clear but too complex to act on.
-- Use `calibrate` if the next issue is uncertain evidence or confidence.
-- Use `explain` if the clarified idea needs to be communicated.
-- Use `attack` if the framing itself is still fragile or contestable.
+Do not automatically invoke another thinking skill. After completing the frame, mention at most one optional explicit command only when a separate pass would materially change the decision.

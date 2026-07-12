@@ -1,19 +1,13 @@
 ---
 name: calibrate
 description: >-
-  Use this skill when a judgment, claim, diagnosis, research interpretation, or
-  decision depends on incomplete, conflicting, weak, uneven, or newly changed
-  evidence. Use to update confidence, distinguish strong from weak evidence,
-  separate signal from noise, identify what should change the conclusion, and
-  avoid both overconfidence and paralysis. Also use when the user invokes
-  Bayesian updating, bounded Bayesian reasoning, confidence calibration,
-  evidence weighting, priors, posteriors, or asks how strongly to believe a
-  claim. Prefer frame first if the question is not well-defined. Do not use for
-  ordinary source fetching or data analysis unless the central task is
-  evidence-weighted judgment. If the user mainly asks how strongly to believe a
-  claim, use calibrate even if publication may follow; hand off to attack only
-  when a concrete claim, document, decision, funding request, or rollout
-  commitment is ready for review.
+  Use only for an explicit confidence or evidence-weighting audit: the user
+  invokes `$calibrate` or asks how certain to be, whether evidence is sufficient,
+  how conflicting evidence should change a belief, or what would change a
+  conclusion. Do not trigger merely because evidence is incomplete, a fact needs
+  verification, or a task contains uncertainty. Do not use for ordinary research,
+  source fetching, or data analysis. Do not automatically invoke another
+  thinking skill afterward.
 ---
 
 # Calibrate
@@ -21,6 +15,14 @@ description: >-
 Calibrate aligns belief strength with evidence strength.
 
 It applies Bayesian updating, evidence weighting, and uncertainty management. Numerical probabilities are optional; qualitative confidence is often better.
+
+## Activation Contract
+
+- Trigger only for an explicit `$calibrate` request or an unmistakable confidence audit.
+- Ordinary uncertainty is not a trigger; verify facts and answer normally when confidence itself is not the user's question.
+- Use at most one of `frame`, `simplify`, `calibrate`, `explain`, and `attack` in a response by default.
+- Never load another thinking skill as an automatic handoff. Complete the calibration pass first.
+- If another mode could materially help later, mention at most one optional next pass after delivering the current result.
 
 ## When To Use
 
@@ -39,12 +41,10 @@ Do not use it merely because a task mentions evidence. Use it when judgment unde
 
 Use `calibrate` to decide how strongly to believe something, not to gather all possible evidence.
 
-- If the claim or decision itself is poorly defined, use `frame` first.
-- If the issue is too many moving parts rather than uncertain evidence, use `simplify` instead.
-- If the user needs to communicate a calibrated judgment, use `explain` after calibration.
-- If a calibrated judgment may still fail under objections or alternative explanations, use `attack` after calibration.
-- If the user is moving from belief update to commitment action, such as announcing, launching, publishing, submitting, applying for funding, or rolling out, use `attack` for pre-commitment stress testing instead of continuing to calibrate.
-- If fresh facts are required and could have changed, fetch or verify them with the appropriate tool before calibrating.
+- If the claim is too poorly defined to evaluate, state that limitation; do not chain to another thinking skill.
+- If complexity, communication, or robustness is the real bottleneck, say calibration is not the right audit instead of loading another mode.
+- If fresh facts could change the conclusion, verify them with the appropriate tool before calibrating.
+- Separate confidence in evidence from confidence in the decision that follows from it.
 
 ## What To Do
 
@@ -83,12 +83,6 @@ Stop calibrating when the confidence level, key evidence, remaining uncertainty,
 - Overusing mathematical formality when qualitative updating is enough.
 - Claiming certainty when the evidence only supports a tentative conclusion.
 
-## Handoff
+## Optional Next Pass
 
-After calibration:
-
-- Use `frame` if the evidence suggests the original problem is misframed.
-- Use `simplify` if too many factors are overwhelming the decision.
-- Use `explain` if the updated judgment needs to be communicated clearly.
-- Use `attack` if alternative explanations or hidden risks remain strong.
-- Use `attack` when the user moves to a commitment action such as announcing, applying for funding, launching, submitting, or rolling out; do not keep calibrating.
+Do not automatically invoke another thinking skill. After completing the calibration, mention at most one optional explicit command only when a separate pass would materially change the decision.

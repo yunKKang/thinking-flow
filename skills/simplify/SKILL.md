@@ -1,19 +1,12 @@
 ---
 name: simplify
 description: >-
-  Use this skill when a problem, plan, model, research design, or decision is
-  already roughly framed but has become too complex to act on and needs the
-  smallest meaningful version. Use when there are too many variables, too many
-  possible directions, premature optimization, unclear first steps, or a need for
-  a baseline, prototype, minimum viable model, or staged expansion path. Prefer
-  this when the user invokes Occam's Razor, razor thinking, opportunity cost,
-  bounded rationality, MVP thinking, or asks what can be safely removed. Prefer
-  this directly, without frame first, when the objective is already stated and
-  the user asks where to start among overloaded requirements. Prefer frame first
-  if the problem boundary is unclear. Do not use to remove complexity that is
-  essential to the real mechanism, or to target safety mechanisms: redundancy,
-  watchdogs, validation layers, safety-critical or medical systems. Requests to
-  simplify those mechanisms should route to frame or attack, not simplify.
+  Use only for an explicit complexity-reduction audit: the user invokes
+  `$simplify` or asks what can be removed, what the smallest meaningful version
+  is, where to start among overloaded requirements, or how to define a baseline
+  or MVP. Do not trigger merely because a task has several steps or could be
+  shorter. Never simplify away safety, validation, data integrity, or the core
+  mechanism. Do not automatically invoke another thinking skill afterward.
 ---
 
 # Simplify
@@ -21,6 +14,14 @@ description: >-
 Simplify reduces complexity to an actionable level without destroying the core logic.
 
 It applies Occam's Razor, minimal viable model thinking, opportunity cost, and bounded rationality. The goal is not to make the problem simplistic. The goal is to find the simplest version that still answers the real question.
+
+## Activation Contract
+
+- Trigger only for an explicit `$simplify` request or an unmistakable complexity-reduction audit.
+- Multiple steps alone are not a trigger; use normal concise execution when no audit is requested.
+- Use at most one of `frame`, `simplify`, `calibrate`, `explain`, and `attack` in a response by default.
+- Never load another thinking skill as an automatic handoff. Complete the simplification pass first.
+- If another mode could materially help later, mention at most one optional next pass after delivering the current result.
 
 ## When To Use
 
@@ -39,13 +40,10 @@ Do not use it when the problem is unclear; use `frame` first.
 
 Use `simplify` to reduce a known problem to an actionable version, not to redefine the problem from scratch.
 
-- If the user has not clarified the real objective or boundary, use `frame` first.
-- If the objective is already stated and the complexity lives in the plan or requirement list, use `simplify` directly instead of framing again.
-- If the bottleneck is confidence in evidence or a claim, use `calibrate` instead.
-- If the bottleneck is communication, use `explain` instead.
-- If the plan is already chosen and needs failure-mode review, use `attack` instead.
-- If simplification would remove the mechanism that makes the problem real, keep that mechanism in scope.
-- If simplification would target redundancy, watchdogs, validation layers, safety-critical systems, or medical systems, do not include `simplify` in the initial route. Use `frame` or `attack` to fence the risk. Only after the safety mechanism is explicitly preserved may later work simplify surrounding workflow, presentation, or non-safety code.
+- If the objective or boundary is not clear enough to simplify safely, stop and name the missing boundary; do not load another thinking skill.
+- If confidence, communication, or robustness is the real bottleneck, say that simplification is not the right audit instead of chaining.
+- Keep the mechanism that makes the problem real.
+- Never simplify redundancy, watchdogs, validation layers, safety-critical systems, medical safeguards, or data-integrity controls.
 
 ## What To Do
 
@@ -82,11 +80,6 @@ Stop simplifying when there is a smallest meaningful version with a clear next a
 - Encouraging premature optimization.
 - Producing a version so minimal that it no longer answers the real question.
 
-## Handoff
+## Optional Next Pass
 
-After simplifying:
-
-- Use `calibrate` if the simplified version depends on uncertain assumptions.
-- Use `explain` if the simplified model needs to be communicated clearly.
-- Use `attack` if the simplification might hide important risks.
-- Return to `frame` if simplification reveals the original problem was poorly defined.
+Do not automatically invoke another thinking skill. After completing the simplification, mention at most one optional explicit command only when a separate pass would materially change the decision.

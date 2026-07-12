@@ -7,7 +7,7 @@ $ErrorActionPreference = "Stop"
 
 $RepoRoot = Resolve-Path (Join-Path $PSScriptRoot "..")
 $SourceRoot = Join-Path $env:USERPROFILE ".cc-switch\skills"
-$Skills = @("frame", "simplify", "calibrate", "explain", "attack")
+$Skills = @("frame", "simplify", "calibrate", "explain", "attack", "clearwrite")
 
 foreach ($Skill in $Skills) {
     $Source = Join-Path $SourceRoot "$Skill\SKILL.md"
